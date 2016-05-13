@@ -23,6 +23,8 @@
        var node = document.getElementById(options.id);
        var editor = new MediumEditor(node, options);
 
+       editor.setContent(options.initialContent);
+
        editor.subscribe('editableInput', function(event, editable) {
          app.ports.updateMediumEditor.send(editor.serialize());
        });

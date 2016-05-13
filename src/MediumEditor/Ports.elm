@@ -4,6 +4,7 @@ port module MediumEditor.Ports exposing (..)
 
 type alias PortEditorOptions
   = { id : String
+    , initialContent : String
     , toolbar : PortToolbarOptions
     , activeButtonClass : String
     , disableReturn : Bool
@@ -27,6 +28,7 @@ type alias PortEditorValue
 defaultOptions : String -> PortEditorOptions
 defaultOptions id =
   { id = id
+  , initialContent = ""
   , toolbar = defaultToolbar
   , activeButtonClass = "medium-editor-button-active"
   , disableReturn = False
@@ -41,6 +43,10 @@ defaultToolbar =
   , sticky = False
   , updateOnEmptySelection = False
   }
+
+withContent : String -> PortEditorOptions -> PortEditorOptions
+withContent content options =
+  { options | initialContent = content }
 
 port initMediumEditor : PortEditorOptions -> Cmd msg
 
