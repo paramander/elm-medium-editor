@@ -1,0 +1,18 @@
+{
+  "version": "0.1.0",
+  "summary": "Elm bindings for Medium Editor WYSIWYG conteneditable",
+  "repository": "https://github.com/user/project.git",
+  "license": "None",
+  "source-directories": [
+    "."
+  ],
+  "exposed-modules": [
+    "MediumEditor",
+    "MediumEditor.Ports"
+  ],
+  "dependencies": {
+    "elm-lang/core": "4.0.0 <= v < 5.0.0",
+    "elm-lang/html": "1.0.0 <= v < 2.0.0"
+  },
+  "elm-version": "0.17.0 <= v < 0.18.0"
+}

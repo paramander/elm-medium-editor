@@ -1,0 +1,28 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Test</title>
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/medium-editor/5.16.1/css/medium-editor.min.css" type="text/css" media="screen" charset="utf-8" />
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/medium-editor/5.16.1/css/themes/bootstrap.min.css" type="text/css" media="screen" charset="utf-8" />
+    <style>
+     body {
+       font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+       font-size: 22px;
+       line-height: 30px;
+     }
+    </style>
+  </head>
+  <body>
+    <script src="//cdn.jsdelivr.net/medium-editor/5.16.1/js/medium-editor.min.js"></script>
+    <script type="text/javascript" src="elm.js"></script>
+    <script type="text/javascript">
+     var app = Elm.Main.fullscreen();
+
+     app.ports.initMediumEditor.subscribe(function(options) {
+       var node = document.getElementById(options.id);
+       new MediumEditor(node, options);
+     });
+    </script>
+  </body>
+</html>
