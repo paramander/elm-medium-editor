@@ -21,7 +21,11 @@
 
      app.ports.initMediumEditor.subscribe(function(options) {
        var node = document.getElementById(options.id);
-       new MediumEditor(node, options);
+       var editor = new MediumEditor(node, options);
+
+       editor.subscribe('editableInput', function(event, editable) {
+         app.ports.updateMediumEditor.send(editor.serialize());
+       });
      });
     </script>
   </body>

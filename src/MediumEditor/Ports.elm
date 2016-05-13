@@ -18,6 +18,12 @@ type alias PortToolbarOptions
     , updateOnEmptySelection : Bool
     }
 
+type alias PortEditorData
+  = { editor : PortEditorValue }
+
+type alias PortEditorValue
+  = { value : String }
+
 defaultOptions : String -> PortEditorOptions
 defaultOptions id =
   { id = id
@@ -37,3 +43,5 @@ defaultToolbar =
   }
 
 port initMediumEditor : PortEditorOptions -> Cmd msg
+
+port updateMediumEditor : (PortEditorData -> msg) -> Sub msg

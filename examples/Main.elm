@@ -1,5 +1,7 @@
 import MediumEditor
 
+import MediumEditor.Ports as Ports
+
 import Html.App as Html
 import Html exposing (div, Html)
 import Html.Attributes exposing (class)
@@ -9,8 +11,7 @@ main =
         { init = init
         , view = view
         , update = update
-        , subscriptions =
-          \_ -> Sub.none
+        , subscriptions = \_ -> subscriptions
         }
 
 type alias Model
@@ -49,3 +50,7 @@ view model =
   div
     [ class "container" ]
     [ Html.map MediumMsg (MediumEditor.view model.editor) ]
+
+subscriptions : Sub Msg
+subscriptions =
+  Sub.batch [ Ports.updateMediumEditor <| MediumMsg << MediumEditor.UpdateContent << .value << .editor ]

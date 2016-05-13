@@ -29,6 +29,7 @@ type alias Editor
 {-| test -}
 type Msg
   = NoOp
+  | UpdateContent String
 
 {-| test -}
 init : String -> String -> (Editor, Cmd Msg)
@@ -51,12 +52,17 @@ init id class =
 update : Msg -> Editor -> (Editor, Cmd Msg)
 update msg model =
   case msg of
+    UpdateContent str ->
+      ( { model | content = str }
+      , Cmd.none
+      )
     NoOp ->
       ( model
-      , Cmd.none)
+      , Cmd.none
+      )
 
 {-| test -}
-view : Editor -> Html a
+view : Editor -> Html Msg
 view editor =
   div
     [ class editor.class
