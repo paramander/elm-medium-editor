@@ -1,17 +1,16 @@
 module MediumEditor exposing (..)
 
-{-| A wrapper package for the javascript library medium-editor Editor Msg init update view
+{-| A wrapper package for the javascript library medium-editor.
 
 # Definition
-@docs Editor, Msg, init
+@docs Editor, init
 
 # State
-@docs update
+@docs Msg, update
 
 # Views
 @docs view
-
- -}
+-}
 
 import MediumEditor.Ports exposing (PortEditorOptions, defaultOptions, initMediumEditor, withContent)
 
@@ -68,7 +67,10 @@ init id class content =
     , initMediumEditor options
     )
 
-{-| test -}
+{-| Following The Elm Architecture, in the `update` function, state changes are handled
+such as updated the editor content as the javascript library medium-editor changes
+the DOM. These changes are communicated back to Elm via ports.
+-}
 update : Msg -> Editor -> (Editor, Cmd Msg)
 update msg model =
   case msg of
@@ -81,7 +83,12 @@ update msg model =
       , Cmd.none
       )
 
-{-| test -}
+{-| The view of an editor is only displaying it's class and id. The javascript
+library itself will handle initializing the toolbars and data attributes. Note that
+the initial content is not rendered. If the initial content were to be rendered,
+the `contenteditable` selection state would be lost with every content state update.
+Therefor, we leave the content rendering to the DOM itself.
+-}
 view : Editor -> Html Msg
 view editor =
   div
