@@ -1,7 +1,7 @@
 {
   "version": "0.1.0",
   "summary": "Elm bindings for Medium Editor WYSIWYG conteneditable",
-  "repository": "https://github.com/user/project.git",
+  "repository": "https://github.com/paramanders/elm-medium-editor.git",
   "license": "None",
   "source-directories": [
     "."
