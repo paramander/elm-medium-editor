@@ -12,7 +12,8 @@ module MediumEditor exposing (..)
 @docs view
 -}
 
-import MediumEditor.Ports exposing (PortEditorOptions, defaultOptions, initMediumEditor, withContent)
+import MediumEditor.Ports exposing (initMediumEditor, mapOptions)
+import MediumEditor.Options exposing (EditorOptions)
 
 import Html exposing (..)
 import Html.Attributes exposing (..)
@@ -28,6 +29,7 @@ type alias Editor
   = { id : String
     , class : String
     , content : String
+    , options : EditorOptions
     }
 
 {-| The possible mutations this `Editor` can handle are defined in `Msg`. When using
@@ -52,19 +54,18 @@ Setting up an editor is an effect. It will call the initialization port for you.
 In this initialization port, the editor is setup given a set of options defined
 in the `Ports` module.
 -}
-init : String -> String -> String -> (Editor, Cmd Msg)
-init id class content =
+init : String -> String -> String -> EditorOptions -> (Editor, Cmd Msg)
+init id class content options =
   let
     editor =
       { id = id
       , class = class
       , content = content
+      , options = options
       }
-    options =
-      withContent content <| defaultOptions id
   in
     ( editor
-    , initMediumEditor options
+    , initMediumEditor <| mapOptions id content options
     )
 
 {-| Following The Elm Architecture, in the `update` function, state changes are handled

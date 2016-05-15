@@ -1,6 +1,7 @@
 import MediumEditor
 
 import MediumEditor.Ports as Ports
+import MediumEditor.Options exposing (defaultOptions)
 
 import Html.App as Html
 import Html exposing (div, Html)
@@ -24,7 +25,7 @@ type Msg
 init : (Model, Cmd Msg)
 init =
   let
-    (editor, childMsgs) = MediumEditor.init "editor" "editor" testData
+    (editor, childMsgs) = MediumEditor.init "editor" "editor" testData defaultOptions
   in
     ( { editor = editor }
     , Cmd.map MediumMsg childMsgs
