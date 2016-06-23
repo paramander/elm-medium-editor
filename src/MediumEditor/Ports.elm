@@ -51,11 +51,6 @@ type alias PortToolbarOptions
 This type alias is passed through the `updateMediumEditor` port.
 -}
 type alias PortEditorData
-  = { editor : PortEditorValue }
-
-{- The `PortEditorValue` type alias contains the editor state at the DOM level.
--}
-type alias PortEditorValue
   = { value : String }
 
 {-| Use `mapOptions` before sending your `Editor` through the `initMediumEditor` port. It

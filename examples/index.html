@@ -26,7 +26,9 @@
        editor.setContent(options.initialContent);
 
        editor.subscribe('editableInput', function(event, editable) {
-         app.ports.updateMediumEditor.send(editor.serialize());
+         var changeset = editor.serialize();
+
+         app.ports.updateMediumEditor.send(changeset[options.id]);
        });
      });
     </script>

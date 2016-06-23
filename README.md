@@ -51,7 +51,7 @@ Add the `updateMediumEditor` port to your subscriptions in your `Html.App`:
             , update = update
             , subscriptions =
                 \_ ->
-                  Sub.batch [ MediumEditor.Ports.updateMediumEditor <| ChildEditorMsg << MediumEditor.UpdateContent << .value << .editor ]
+                  Sub.batch [ MediumEditor.Ports.updateMediumEditor <| ChildEditorMsg << MediumEditor.UpdateContent << .value ]
             }
             
 This will keep the DOM state and the Elm state in sync.
